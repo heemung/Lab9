@@ -33,15 +33,14 @@ namespace Lab9
 
             while (contYN)
             {
-                // if (contYN)
-                //{
                 Console.WriteLine("\nWhat would you like to do?\nType 'add' to add student" +
                     " information. Type 'info' to look up student information.");
                 if (WhichAddorRead() == true)
                 {
                     while (true)
                     {
-                        orginalNum = UserInput();
+                        int countList = names.Count;
+                        orginalNum = UserInput(countList);
                         studentNum = orginalNum - 1;
                         try
                         {
@@ -62,9 +61,9 @@ namespace Lab9
                         }
                         catch (ArgumentOutOfRangeException)
                         {
-                            Console.WriteLine("Error: please a number between 1 and 20." +
-                                " Try Again\n");
-                            studentNum = 0;  
+                            Console.WriteLine("Error: please a number between 1 and {0}." +
+                                " Try Again\n", countList);
+                            studentNum = 0;
                         }
                     }
                 }
@@ -73,18 +72,17 @@ namespace Lab9
                     Console.WriteLine("Adding New Student!\n");
                     AddtoLists(names, homeTown, food, color);
                 }
-               // }
 
             }
             Console.WriteLine("Thank You Come Again!");
             Console.ReadLine();
         }
 
-        static int UserInput()
+        static int UserInput(int ammountOfListObjects)
         {
             int userInput;
             Console.WriteLine("Which student would you" +
-            " like to learn more about? (enter a number 1-20)");
+            " like to learn more about? (enter a number 1-{0})",ammountOfListObjects);
             try
             {
                 userInput = int.Parse(Console.ReadLine());
@@ -93,7 +91,7 @@ namespace Lab9
             catch (FormatException)
             {
                 Console.WriteLine("ERROR: Please check your input");
-                return UserInput();
+                return UserInput(ammountOfListObjects);
             }
         }
 
@@ -150,11 +148,12 @@ namespace Lab9
 
         static string CheckBlankData(string temp)
         {
-            while(true)
+            while (true)
             {
-                if(temp == "")
+                if (temp == "")
                 {
                     Console.WriteLine("Please enter valid data.");
+                    temp = Console.ReadLine();
                 }
                 else
                 {
@@ -317,6 +316,11 @@ namespace Lab9
             namesList.Add("orange");
             namesList.Add("purple");
             namesList.Add("super white");
+        }
+
+        static void ReIndexLists()
+        {
+        
         }
 
     }
