@@ -11,7 +11,12 @@ namespace Lab9
         static string strCheck;
         static void Main(string[] args)
         {
+            int studentNum, orginalNum;
+            bool contYN = true, validData = true;
+            string userAnswer;
+            Console.WriteLine("Welcome to Our C# Class. ");
 
+            //init list names
             List<string> names = new List<string>();
             NameAddList(names);
 
@@ -24,17 +29,13 @@ namespace Lab9
             List<string> color = new List<string>();
             ColorAddList(color);
 
-
-            int studentNum, orginalNum;
-            bool contYN = true, validData = true;
-            string userAnswer;
-
-            Console.WriteLine("Welcome to Our C# Class. ");
-
+            //main continue
             while (contYN)
             {
                 Console.WriteLine("\nWhat would you like to do?\nType 'add' to add student" +
                     " information. Type 'info' to look up student information.");
+                // asking what the user will like to do add student or get info
+                //get info is the true statment, else is the add student.
                 if (WhichAddorRead() == true)
                 {
                     while (true)
@@ -67,6 +68,7 @@ namespace Lab9
                         }
                     }
                 }
+                //adding students
                 else
                 {
                     Console.WriteLine("Adding New Student!\n");
@@ -95,6 +97,7 @@ namespace Lab9
             }
         }
 
+        //Checks for users yes or no answer to continue. returns bool
         static bool ContinueMethod()
         {
             strCheck = Console.ReadLine().ToLower();
@@ -114,6 +117,8 @@ namespace Lab9
             }
         }
 
+        //method to ask if the user watns add student or info students 
+        //works a lot like Continue Method. returns bool
         static bool WhichAddorRead()
         {
             strCheck = Console.ReadLine().ToLower();
@@ -133,6 +138,8 @@ namespace Lab9
             }
         }
 
+        //Asks user to input data about student then Method Checks blank data makes
+        //sure before continueing if data is good before going to next
         static void AddtoLists(List<string> names,
         List<string> hometown, List<string> food, List<string> color)
         {
@@ -146,6 +153,8 @@ namespace Lab9
             color.Add(CheckBlankData(Console.ReadLine()));
         }
 
+        //Checks user data from AddToList Method similar to continue method but returns 
+        //string and users a while true loop
         static string CheckBlankData(string temp)
         {
             while (true)
@@ -162,6 +171,7 @@ namespace Lab9
             }
         }
 
+        //passes all list data into a case and studetnum added color to list cases
         static void Answers(bool validData, string userAnswer, List<string> names,
         List<string> hometown, List<string> food, List<string> color, int studentNum)
         {
@@ -217,11 +227,7 @@ namespace Lab9
             }
         }
 
-        static void UserInputAddListData()
-        {
-
-        }
-
+        //adds names to list
         static void NameAddList(List<string> namesList)
         {
             namesList.Add("Clayton");
@@ -246,6 +252,7 @@ namespace Lab9
             namesList.Add("Drug Guy");
         }
 
+        //adds hometown to lists
         static void HometownAddList(List<string> townList)
         {
             townList.Add("Indy");
@@ -270,6 +277,7 @@ namespace Lab9
             townList.Add("Hell");
         }
 
+        //adds food to list
         static void FoodAddList(List<string> foodList)
         {
             foodList.Add("ice cream");
@@ -294,6 +302,7 @@ namespace Lab9
             foodList.Add("coke");
         }
 
+        //adds color to list
         static void ColorAddList(List<string> namesList)
         {
             namesList.Add("blue");
@@ -318,10 +327,11 @@ namespace Lab9
             namesList.Add("super white");
         }
 
+        /*
         static void ReIndexLists()
         {
         
-        }
+        }*/
 
     }
 }
